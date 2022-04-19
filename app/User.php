@@ -64,6 +64,10 @@ class User extends Authenticatable
     {
     return Carbon::parse($this->attributes['datenaissance'])->age;
     }
+    public function getDatenaissanceAttribute($date)
+    {
+    return Carbon::createFromFormat('Y-m-d', $date)->format('d-m-Y');
+    }
     public function getCreatedAtAttribute($date)
     {
     return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('d-m-Y H:i:s');

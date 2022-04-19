@@ -254,9 +254,9 @@ tbody td:active {
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+             <!-- Nav Item - Dashboard -->
+             <li class="nav-item active">
+                <a class="nav-link" href="{{ route('home') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Tableau De Bord</span></a>
             </li>
@@ -270,8 +270,9 @@ tbody td:active {
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
+            
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('patientliste') }}">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Patients</span>
                 </a>
@@ -279,101 +280,127 @@ tbody td:active {
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
+            @can('user-list',user::class)
             <li class="nav-item">
-            <a class="nav-link collapsed" href="#">
+            <a class="nav-link collapsed" href="{{ route('personnelliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Personnels</span>
                 </a>
             </li>
+            @endcan
+            @can('rdv-list',rendezvous::class)
             <li class="nav-item">
-            <a class="nav-link collapsed" href="#">
+            <a class="nav-link collapsed" href="{{ route('rendezvousliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     
                     <span>Rendez-Vous</span>
                 </a>
             </li>
+            @endcan
+            @can('enfant-list',enfant::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('enfantliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Enfants</span>
                 </a>
             </li>
+            @endcan
+            @can('horaire-list',horaire::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('horaireliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Horaires</span>
                 </a>
             </li>
+            @endcan
+            @can('chambre-list',chambre::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('chambreliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Chambres</span>
                 </a>
             </li>
+            @endcan
+            @can('soin-list',soin::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('soinliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Soins</span>
                 </a>
             </li>
+            @endcan
+            @can('medicament-list',medicament::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Soins</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('medicamentliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Médicaments</span>
                 </a>
             </li>
+            @endcan
+            @can('consultation-list',consultation::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('consultationliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Consultations</span>
                 </a>
             </li>
+            @endcan
+            @can('hospitalisation-list',hospitalisation::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('hospitalisationliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Hospitalisations</span>
                 </a>
             </li>
+            @endcan
+            @can('accouchement-list',accouchement::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('accouchementliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Accouchements</span>
                 </a>
             </li>
+            @endcan
+            @can('analyse-list',analyse::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('analyseliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Analyses</span>
                 </a>
             </li>
+            @endcan
+            @can('role-list',role::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('roleliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Roles</span>
                 </a>
             </li>
+            @endcan
+            @can('ordonnance-list',ordonnance::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('ordonnanceliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Ordonnances</span>
                 </a>
-            </li><li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+            </li>
+            @endcan
+            @can('fichesoin-list',fichesoin::class)
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('fichesoinliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>FicheS Soins</span>
                 </a>
-            </li><li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+            </li>
+            @endcan
+            @can('ficheanalyse-list',ficheanalyse::class)
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('ficheanalyseliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Fiche Analyse</span>
                 </a>
             </li>
+            @endcan
             
         
 
@@ -443,9 +470,9 @@ tbody td:active {
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Caroline Etoughe</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</span>
                                 <img class="img-profile rounded-circle"
-                                    src="dashboard/img/profil.jpg">
+                                src="{{URL::asset(Auth::user()->image)}}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -475,11 +502,19 @@ tbody td:active {
                         <div class="row">
                             <div class="col-lg-3" style=" border-right:1px solid black; margin-right:20px;">
                                 <div class="text-center">
-                                    <img src="dashboard/img/profil.jpg" height="140" style="border-radius: 55px!important;" class="rounded-pill" alt="...">
+                                    <img src="{{URL::asset(Auth::user()->image)}}" height="140" style="border-radius: 55px!important;" class="rounded-pill" alt="...">
                                 </div>
                                <div class="text-center">
                                <h5 class="card-title text-center mt-4">Adresse</h5>
-                                <p class="card-text text-center">Sacré Coeur,Dakar,Sénégal</p>
+                               @if(isset(Auth::user()->adresse))
+                               @foreach ($adresses as $adresse)
+                                <p class="card-text text-center">{{ Auth::user()->adresse->quartier }},{{ Auth::user()->adresse->ville }},{{ Auth::user()->adresse->pays }}</p>
+                                @endforeach
+                                @else
+                                <p class="card-text text-center">Aucune Adresse Enregistrée</p>
+                                @endif
+                                
+                                <a href="{{ route('adressedit') }}" class="btn btn-primary" style="background-color: #FF1493;">Modifier Adresse</a>
                                </div>
                             </div>
                             <!-- <div class="d-flex" style="height: 200px;"> -->
@@ -493,37 +528,37 @@ tbody td:active {
                                  <div class="mb-4">
                                         <label class="list-group-item py-3" for="listGroupCheckableRadios1">
                                             Prénom
-                                            <span class="d-block small opacity-50">Caroline</span>
+                                            <span class="d-block small opacity-50">{{ Auth::user()->prenom }}</span>
                                         </label>
                                     </div>
                                     <div class="mb-4">
                                         <label class="list-group-item py-3" for="listGroupCheckableRadios1">
                                             Nom
-                                            <span class="d-block small opacity-50">Etoughe</span>
+                                            <span class="d-block small opacity-50">{{ Auth::user()->nom }}</span>
                                         </label>
                                     </div>
                                     <div class="mb-4">
                                         <label class="list-group-item py-3" for="listGroupCheckableRadios1">
                                             Age
-                                            <span class="d-block small opacity-50">25 ANS</span>
+                                            <span class="d-block small opacity-50">{{ Auth::user()->age }}</span>
                                         </label>
                                     </div>
                                     <div class="mb-4">
                                         <label class="list-group-item py-3" for="listGroupCheckableRadios1">
                                             Numéro
-                                            <span class="d-block small opacity-50">45</span>
+                                            <span class="d-block small opacity-50">{{ Auth::user()->numero }}</span>
                                         </label>
                                     </div>
                                     <div class="mb-4">
                                         <label class="list-group-item py-3" for="listGroupCheckableRadios1">
                                             Date De Naissance
-                                            <span class="d-block small opacity-50">30-08-1996</span>
+                                            <span class="d-block small opacity-50">{{ Auth::user()->datenaissance }}</span>
                                         </label>
                                     </div>
                                     <div class="mb-4">
                                         <label class="list-group-item py-3" for="listGroupCheckableRadios1">
                                             Email
-                                            <span class="d-block small opacity-50">etoughe@gmail.com</span>
+                                            <span class="d-block small opacity-50">{{ Auth::user()->email }}</span>
                                         </label>
                                     </div>
                                     

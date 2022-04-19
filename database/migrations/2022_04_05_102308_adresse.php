@@ -15,13 +15,13 @@ class Adresse extends Migration
     {
         Schema::create('adresses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_user')->unsigned();;
+            $table->integer('user_id')->unsigned();;
             $table->string('quartier');
             $table->string('ville');
             $table->string('pays');
             $table->timestamps();
 
-            $table->foreign('id_user')
+            $table->foreign('user_id')
             ->references('id')
             ->on('users')
             ->onDelete('cascade');

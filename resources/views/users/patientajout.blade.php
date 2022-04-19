@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,7 +12,7 @@
     <title>Dharma</title>
 
     <!-- Custom fonts for this template-->
-    <link href="dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ asset('dashboard/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -24,6 +24,19 @@
  * Eric Meyer's Reset CSS v2.0+ (https://meyerweb.com/eric/tools/css/reset/)
  * http://cssreset.com
  */
+
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+/* body {
+	line-height: 1.5;
+} */
+ol, ul {
+	list-style: none;
+}
 blockquote, q {
 	quotes: none;
 }
@@ -238,7 +251,7 @@ tbody td:active {
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" style="    background-color: #4e73df;
+        <ul class="navbar-nav sidebar sidebar-dark accordion" style="    background-color: #4e73df;
                 background-image: linear-gradient(180deg,#FF1493 10%,#FF1493 100%);
                 background-size: cover;
             }" id="accordionSidebar">
@@ -248,7 +261,7 @@ tbody td:active {
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Dharma </div>
+                <div class="sidebar-brand-text mx-3">Dharma</div>
             </a>
 
             <!-- Divider -->
@@ -256,7 +269,7 @@ tbody td:active {
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{ route('home') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Tableau De Bord</span></a>
             </li>
@@ -270,8 +283,9 @@ tbody td:active {
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
+            
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('patientliste') }}">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Patients</span>
                 </a>
@@ -279,101 +293,127 @@ tbody td:active {
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
+            @can('user-list',user::class)
             <li class="nav-item">
-            <a class="nav-link collapsed" href="#">
+            <a class="nav-link collapsed" href="{{ route('personnelliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Personnels</span>
                 </a>
             </li>
+            @endcan
+            @can('rdv-list',rendezvous::class)
             <li class="nav-item">
-            <a class="nav-link collapsed" href="#">
+            <a class="nav-link collapsed" href="{{ route('rendezvousliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     
                     <span>Rendez-Vous</span>
                 </a>
             </li>
+            @endcan
+            @can('enfant-list',enfant::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('enfantliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Enfants</span>
                 </a>
             </li>
+            @endcan
+            @can('horaire-list',horaire::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('horaireliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Horaires</span>
                 </a>
             </li>
+            @endcan
+            @can('chambre-list',chambre::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('chambreliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Chambres</span>
                 </a>
             </li>
+            @endcan
+            @can('soin-list',soin::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('soinliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Soins</span>
                 </a>
             </li>
+            @endcan
+            @can('medicament-list',medicament::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Soins</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('medicamentliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Médicaments</span>
                 </a>
             </li>
+            @endcan
+            @can('consultation-list',consultation::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('consultationliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Consultations</span>
                 </a>
             </li>
+            @endcan
+            @can('hospitalisation-list',hospitalisation::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('hospitalisationliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Hospitalisations</span>
                 </a>
             </li>
+            @endcan
+            @can('accouchement-list',accouchement::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('accouchementliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Accouchements</span>
                 </a>
             </li>
+            @endcan
+            @can('analyse-list',analyse::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('analyseliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Analyses</span>
                 </a>
             </li>
+            @endcan
+            @can('role-list',role::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('roleliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Roles</span>
                 </a>
             </li>
+            @endcan
+            @can('ordonnance-list',ordonnance::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('ordonnanceliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Ordonnances</span>
                 </a>
-            </li><li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+            </li>
+            @endcan
+            @can('fichesoin-list',fichesoin::class)
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('fichesoinliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>FicheS Soins</span>
                 </a>
-            </li><li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+            </li>
+            @endcan
+            @can('ficheanalyse-list',ficheanalyse::class)
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('ficheanalyseliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Fiche Analyse</span>
                 </a>
             </li>
+            @endcan
             
         
 
@@ -443,25 +483,28 @@ tbody td:active {
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Caroline Etoughe</span>
+                                
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</span>
                                 <img class="img-profile rounded-circle"
-                                    src="{{ asset('dashboard/img/profil.jpg') }}">
+                                    src="{{URL::asset(Auth::user()->image)}}">
+                                    
                             </a>
+                            
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('profil') }}">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Afficher Profil
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('profiledit') }}">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Modifier Profil
                                 </a>
                                 
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                <a class="dropdown-item" href="/deconnexion" data-toggle="modal" data-target="#logoutModal">
+                                <!-- <a href="/deconnexion" class="button">Déconnexion</a> -->
                                     Déconnexion
                                 </a>
                             </div>
@@ -470,56 +513,158 @@ tbody td:active {
                     </ul>
 
                 </nav>
-                <div class="card ml-4" style="width: 70rem;">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-3" style=" border-right:1px solid black; margin-right:20px;">
-                                <div class="text-center">
-                                    <img src="{{ asset('dashboard/img/profil.jpg') }}" height="140" style="border-radius: 55px!important;" class="rounded-pill" alt="...">
-                                </div>
-                                <input type="file" class="form-control mt-4" id="">
-                            </div>
-                            <!-- <div class="d-flex" style="height: 200px;"> -->
-                                <div class="vr"></div>
-                            <!-- </div> -->
-                            <div class="col-lg-6">
-                                <h2>Création Compte Patient</h2>
-                                <a href="{{ route('patientliste') }}" class="btn btn-primary mb-4">Créer Patient</a>
-                                <div class="mb-4">
-                                        <label class="list-group-item py-3" for="listGroupCheckableRadios1">
-                                            Prénom
-                                            <input type="text" class="form-control" placeholder="name@example.com">
-                                        </label>
-                                    </div>
-                                    <div class="mb-4">
-                                        <label class="list-group-item py-3" for="listGroupCheckableRadios1">
-                                            Nom
-                                            <input type="text" class="form-control" id="" placeholder="Etoughe">
-                                           </label>
-                                    </div>
-                                    <div class="mb-4">
-                                        <label class="list-group-item py-3" for="listGroupCheckableRadios1">
-                                            Age
-                                            <input type="number" class="form-control" id="" placeholder="25">
-    
-                                        </label>
-                                    </div>
-                                    <div class="mb-4">
-                                        <label class="list-group-item py-3" for="listGroupCheckableRadios1">
-                                            Numéro
-                                            <input type="number" class="form-control" id="" placeholder="45">
+                <!-- End of Topbar -->
 
-                                        </label>
-                                    </div>
-                                    <div class="mb-4">
-                                        <label class="list-group-item py-3" for="listGroupCheckableRadios1">
-                                            Date De Naissance
-                                            <input type="date" class="form-control" id="" placeholder="Christelle">
-                                        </label>
-                                    </div>
-                                    <div class="mb-4">
-                                        <label class="list-group-item py-3" for="listGroupCheckableRadios1">
-                                            Email
-                                            <input type="email" class="form-control" id="" placeholder="etoughej@gmail.com">
-                                        </label>
-                                    </div>
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+<div class="card ml-4" style="width: 70rem;">
+                            <div class="card-body">
+                                
+                            <form method="POST" action="{{ route('patientajoutupdate') }}" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                {{ method_field('post') }}
+                
+                                        <div class="row">
+                                                <div class="col-lg-3" style=" border-right:1px solid black; margin-right:20px;">
+                                                    <div class="text-center">
+                                                        
+                                                    </div>
+                                                    <div class="text-center mt-4">
+                                                    <!-- <a href="#" class="btn btn-primary">Choisir</a> -->
+                                                    <input type="file" name="image" class="form-control" id="">
+                                                    </div>
+
+
+                                                </div>
+                                                    <!-- <div class="d-flex" style="height: 200px;"> -->
+                                                <div class="vr"></div>
+                                                    <!-- </div> -->
+                                                <div class="col-lg-6">
+                                                <h2>Créer Compte Patient</h2>
+                                                    <div class="mb-4"  style="margin-left:430px;">
+                                                        <a href="{{ route('patientliste') }}" class="btn btn-primary"style="background-color: #FF1493;">Retour</a>
+    
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <label class="list-group-item py-3" for="listGroupCheckableRadios1">
+                                                        Prénom
+                                                        <input type="text" class="form-control" id="" name="prenom" placeholder="prenom">
+                                                        </label>
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <label class="list-group-item py-3" for="listGroupCheckableRadios1">
+                                                        Nom
+                                                        <input type="text" class="form-control" id="" name="nom" placeholder="nom">
+                                                        </label>
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <label class="list-group-item py-3" for="listGroupCheckableRadios1">
+                                                        Numéro
+                                                        <input type="number" class="form-control" id="" name="numero" placeholder="numero">
+                                                        </label>
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <label class="list-group-item py-3" for="listGroupCheckableRadios1">
+                                                        Date De Naissance
+                                                        <input type="date" class="form-control" id="" name="datenaissance">
+                                                        </label>
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <label class="list-group-item py-3" for="listGroupCheckableRadios1">
+                                                        Email
+                                                        <input type="email" class="form-control" id="" name="email" placeholder="VotreEmail@exemple.com">
+                                                        </label>
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <label class="list-group-item py-3" for="listGroupCheckableRadios1">
+                                                        Mot De Passe
+                                                        <input type="password" class="form-control" id="" name="password" >
+                                                        </label>
+                                                    </div>
+                                
+                                                    <div class="mb-4">
+                                                            <input  type="hidden" class="form-control" id="" name="roles" value="Patient">
+                                                        
+                                                    </div>
+                                                    
+                                                    <div class="form-group text-center">
+                                                        <input type="submit" name="ajout" class="btn btn-primary input-lg" value="Ajouter" />
+                                                    </div>  
+                                            
+                                        </div>
+                            </form> 
+                                <!-- <div class="col-lg-3">4</div> -->
+                            </div>
+                        </div>
+</div>
+
+
+</div>
+<!-- /.container-fluid -->
+            <!-- End of Main Content -->
+
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                <div class="copyright">
+          &copy; Copyright <strong><span>Dharma</span></strong>. Tous droits reservés.
+        </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href={{ route('deconnexion') }}>Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{ asset('dashboard/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{{ asset('dashboard/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{{ asset('dashboard/js/sb-admin-2.min.js') }}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{{ asset('dashboard/vendor/chart.js/Chart.min.js') }}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{ asset('dashboard/js/demo/chart-area-demo.js') }}"></script>
+    <script src="{{ asset('dashboard/js/demo/chart-pie-demo.js') }}"></script>
+
+</body>
+
+</html>

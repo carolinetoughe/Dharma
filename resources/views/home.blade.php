@@ -269,7 +269,7 @@ tbody td:active {
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{ route('home') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Tableau De Bord</span></a>
             </li>
@@ -283,6 +283,7 @@ tbody td:active {
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
+            
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('patientliste') }}">
                     <i class="fas fa-fw fa-cog"></i>
@@ -292,101 +293,127 @@ tbody td:active {
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
+            @can('user-list',user::class)
             <li class="nav-item">
             <a class="nav-link collapsed" href="{{ route('personnelliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Personnels</span>
                 </a>
             </li>
+            @endcan
+            @can('rdv-list',rendezvous::class)
             <li class="nav-item">
-            <a class="nav-link collapsed" href="#">
+            <a class="nav-link collapsed" href="{{ route('rendezvousliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     
                     <span>Rendez-Vous</span>
                 </a>
             </li>
+            @endcan
+            @can('enfant-list',enfant::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('enfantliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Enfants</span>
                 </a>
             </li>
+            @endcan
+            @can('horaire-list',horaire::class)
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('horaireliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Horaires</span>
                 </a>
             </li>
+            @endcan
+            @can('chambre-list',chambre::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('chambreliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Chambres</span>
                 </a>
             </li>
+            @endcan
+            @can('soin-list',soin::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('soinliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Soins</span>
                 </a>
             </li>
+            @endcan
+            @can('medicament-list',medicament::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Soins</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('medicamentliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Médicaments</span>
                 </a>
             </li>
+            @endcan
+            @can('consultation-list',consultation::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('consultationliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Consultations</span>
                 </a>
             </li>
+            @endcan
+            @can('hospitalisation-list',hospitalisation::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('hospitalisationliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Hospitalisations</span>
                 </a>
             </li>
+            @endcan
+            @can('accouchement-list',accouchement::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('accouchementliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Accouchements</span>
                 </a>
             </li>
+            @endcan
+            @can('analyse-list',analyse::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('analyseliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Analyses</span>
                 </a>
             </li>
+            @endcan
+            @can('role-list',role::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('roleliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Roles</span>
                 </a>
             </li>
+            @endcan
+            @can('ordonnance-list',ordonnance::class)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('ordonnanceliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Ordonnances</span>
                 </a>
-            </li><li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+            </li>
+            @endcan
+            @can('fichesoin-list',fichesoin::class)
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('fichesoinliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>FicheS Soins</span>
                 </a>
-            </li><li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+            </li>
+            @endcan
+            @can('ficheanalyse-list',ficheanalyse::class)
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('ficheanalyseliste') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Fiche Analyse</span>
                 </a>
             </li>
+            @endcan
             
         
 
@@ -459,7 +486,7 @@ tbody td:active {
                                 
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</span>
                                 <img class="img-profile rounded-circle"
-                                    src="{{URL::asset('storage/'.Auth::user()->image)}}">
+                                    src="{{URL::asset(Auth::user()->image)}}">
                                     
                             </a>
                             
@@ -470,7 +497,7 @@ tbody td:active {
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Afficher Profil
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('profiledit') }}">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Modifier Profil
                                 </a>
@@ -814,117 +841,6 @@ tbody td:active {
 
             </div>
             <!-- End of Main Content -->
-
-
-                <!-- Patient Home Visuel -->
-                
-                <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Bienvenue,Christiane</h1>
-                        
-                    </div>
-
-                    <!-- Content Row -->
-                    <div class="row">
-
-                        
-                        <div class="col-xl-12 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Informations Médicales</h6>
-                                    <div class="dropdown no-arrow">
-                                    <div class="dropdown no-arrow">
-                                    <button type="button" class="btn btn-primary" style="background-color: #FF1493;">Modifier</button>
-                                    </div>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    
-                                <div class="card mb-2 py-3 border-left-primary">
-                                        <div class="card-body">
-                                           <div class="row">
-                                               <div class="col-md-3">
-                                               <img class="img-profile rounded-circle" height="200"
-                                    src="{{asset ('dashboard/img/profil2.jpg') }}">
-                                                    <div  class="text-center">
-                                                   <span><strong>Christiane Babongui</strong></span>
-                                                   </div>
-                                               </div>
-                                               <div class="col-md-3">
-                                                    <span> <strong>Taille</strong> - 0 </span> <br>
-                                                    <span> <strong>Profession</strong> - RAS</span> <br>
-                                                    <span> <strong>Adresse</strong> - RAS,RAS,RAS</span>
-                                               </div>
-                                               <div class="col-md-3">
-                                                    <span> <strong>Grossesses Antérieures</strong> - 0</span> <br>
-                                                    <span><strong>Date des Dernières règles</strong> - 01/01/2010 </span> <br>
-                                                    <span><strong>Avortement</strong> - RAS</span>
-                                               </div>
-                                               <div class="col-md-3">
-                                                    <span> <strong>Nombre d'enfants</strong> - 0</span> <br>
-                                                    <span> <strong>Césarienne</strong> - RAS</span> <br>
-                                                    <span><strong>Date d'accouchement Approximatif</strong>- 01/01/2010</span>
-                                               </div>
-                                           </div>
-                                        </div>
-                                    </div> 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Antécédents</h6>
-                                    <div class="dropdown no-arrow">
-                                    <button type="button" class="btn btn-primary" style="background-color: #FF1493;">Ajouter</button>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    
-                                <div class="card mb-2 py-3 border-left-primary">
-                                        <div class="card-body">
-                                            <span> RAS</span> <br>
-                                           
-                                        </div>
-                                    </div> 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Adresse</h6>
-                                    <div class="dropdown no-arrow">
-                                    <div class="dropdown no-arrow">
-                                    <button type="button" class="btn btn-primary" style="background-color: #FF1493;">Modifier</button>
-                                    </div>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                <div class="card mb-2 py-3 border-left-primary">
-                                        <div class="card-body">
-                                            <span> Numéro de Rue - RAS</span> <br>
-                                            <span> Quartier - RAS</span> <br>
-                                            <span> Ville - RAS</span><br>
-                                            <span> Pays - RAS</span> 
-                                            
-                                        </div>
-                                    </div> 
-                                   
-                                </div>
-                            </div>
-                        </div>
-                 
-                    </div>
-                <!-- Fin Patient Home Visuel -->
 
 
             <!-- Footer -->

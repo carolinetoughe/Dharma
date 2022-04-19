@@ -17,15 +17,40 @@ Route::get('/dashboard', function () {
 });
 
 Route::get('/profil', 'UserController@profil')->name('profil');
+Route::get('/adresse/edit', 'AdresseController@adressedit')->name('adressedit');
+Route::post('/adresse/edit', 'AdresseController@adresseditupdate')->name('adresseditupdate');
+
 Route::get('/profil/edit', 'UserController@profiledit')->name('profiledit');
+Route::post('/profil/edit', 'UserController@profileditupdate')->name('profileditupdate');
+
+
 Route::get('/patient/liste', 'UserController@patientliste')->name('patientliste');
 Route::get('/personnel/liste', 'UserController@personnelliste')->name('personnelliste');
+
 Route::get('/patient/ajout', 'UserController@patientajout')->name('patientajout');
+Route::post('/patient/ajout', 'UserController@patientajoutupdate')->name('patientajoutupdate');
+
 Route::get('/personnel/ajout', 'UserController@personnelajout')->name('personnelajout');
+Route::post('/personnel/ajout', 'UserController@personnelajoutupdate')->name('personnelajoutupdate');
+
 Route::get('/horaire/liste', 'HoraireController@horaireliste')->name('horaireliste');
 Route::get('/horaire/ajout', 'HoraireController@create')->name('horaireajout');
 Route::get('/medicament/liste', 'MedicamentController@medicamentliste')->name('medicamentliste');
 Route::get('/medicament/ajout', 'MedicamentController@create')->name('medicamentajout');
+Route::get('/rendezvous/liste', 'RendezvousController@rendezvousliste')->name('rendezvousliste');
+Route::get('/role/liste', 'RoleController@roleliste')->name('roleliste');
+Route::get('/analyse/liste', 'AnalyseController@analyseliste')->name('analyseliste');
+Route::get('/hospitalisation/liste', 'HospitalisationController@hospitalisationliste')->name('hospitalisationliste');
+Route::get('/enfant/liste', 'EnfantController@enfantliste')->name('enfantliste');
+Route::get('/chambre/liste', 'ChambreController@chambreliste')->name('chambreliste');
+Route::get('/soin/liste', 'SoinController@soinliste')->name('soinliste');
+Route::get('/fichesoin/liste', 'FichesoinController@fichesoinliste')->name('fichesoinliste');
+Route::get('/ficheanalyse/liste', 'FicheanalyseController@ficheanalyseliste')->name('ficheanalyseliste');
+Route::get('/ordonnance/liste', 'OrdonnanceController@ordonnanceliste')->name('ordonnanceliste');
+Route::get('/consultation/liste', 'ConsultationController@consultationliste')->name('consultationliste');
+Route::get('/accouchement/liste', 'AccouchementController@accouchementliste')->name('accouchementliste');
+
+
 
 Route::get('/', function () {
     return view('index');
@@ -33,24 +58,26 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
-    //Route::resource('services', 'ServiceController');
-    //Route::resource('consultations','ConsultationController');
-    //Route::resource('disponibilites','DisponibiliteController');
-    //Route::resource('analyses','AnalyseController');
-    //Route::resource('ficheanalyses','FicheanalyseController');
+    Route::resource('accouchements', 'AccouchementController');
+    Route::resource('consultations','ConsultationController');
+    Route::resource('hospitalisations','HospitalisationController');
+    Route::resource('horaires','HoraireController');
+    Route::resource('analyses','AnalyseController');
+    Route::resource('enfants','EnfantController');
+    Route::resource('chambres','ChambreController');
+    Route::resource('soins','SoinController');
+    Route::resource('fichesoins','FichesoinController');
+    Route::resource('ficheanalyses','FicheanalyseController');
     Route::resource('rendezvous','RendezvousController');
-    //Route::resource('ordonnances','OrdonnanceController');
-
+    Route::resource('ordonnances','OrdonnanceController');
+    Route::resource('medicaments','MedicamentController');
 
 
     //Route::get('/ficheanalyse/{consultation}/create', 'FicheanalyseController@createFiche')->name('create_fiche');
     //Route::post('/ficheanalyse/{consultation}/create', 'FicheanalyseController@store');
 
-    //Route::name ('notification.')->prefix('notification')->group(function () {
-    //Route::name ('index')->get ('/', 'NotificationController@index');
-    //Route::name ('update')->patch ('{notification}', 'NotificationController@update');
 
-    //});
+
 });
 Route::resource('users','UserController');
 Auth::routes();

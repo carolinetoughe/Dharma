@@ -46,7 +46,7 @@ class HomeController extends Controller
     }
     public function patienttotal()
     {
-        $patients = User::where('roles','Patient')->count();
+        $patients =User::whereHas('roles', function($q){$q->whereIn('name', ['Patient']);})->count();
         return view('home',compact('patients'));
     }
     public function patientdashboard()

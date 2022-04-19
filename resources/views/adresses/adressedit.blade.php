@@ -14,16 +14,222 @@
     <!-- Custom fonts for this template-->
     <link href="{{ asset('dashboard/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        href="{{ asset('https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i') }}"
         rel="stylesheet">
 
-        
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
     <!-- Custom styles for this template-->
-    <link href="{{ asset('dashboard/css/sb-admin-2.min.css') }}" rel="stylesheet">
-    
+    <link href="{{ asset('dashboard/css/sb-admin-2.min.css" rel="stylesheet') }}">
+    <style>
+        /**
+ * Eric Meyer's Reset CSS v2.0+ (https://meyerweb.com/eric/tools/css/reset/)
+ * http://cssreset.com
+ */
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-spacing: 2px;
+}
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.clearfix {
+    *zoom: 1;
+}
+a, a:hover {
+    text-decoration: none;
+}
+.img-responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     user-select: none;
+}
+
+.elegant-calencar {
+    /* width: 25em; */
+    height: 32em;
+    border: 1px solid #c9c9c9;
+    -webkit-box-shadow: 0 0 5px #c9c9c9;
+    box-shadow: 0 0 5px #c9c9c9;
+    text-align: center;
+    margin: 4em auto;
+    position: relative;
+}
+
+#header {
+    font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    height: 14em;
+    background-color: #2a3246;
+    margin-bottom: 1em;
+}
+
+.pre-button, .next-button {
+    margin-top: 2em;
+    font-size: 3em;
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
+    cursor: pointer;
+    width: 1em;
+    height: 1em;
+    line-height: 1em;
+    color: #e66b6b;
+    border-radius: 50%;
+}
+
+.pre-button:hover, .next-button:hover {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+
+.pre-button:active,.next-button:active{
+    -webkit-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    transform: scale(0.7);
+}
+
+.pre-button {
+    float: left;
+    margin-left: 0.5em;
+}
+
+.next-button {
+    float: right;
+    margin-right: 0.5em;
+}
+
+.head-info {
+    float: left;
+    width: 16em;
+}
+
+.head-day {
+    margin-top: 30px;
+    font-size: 8em;
+    line-height: 1;
+    color: #fff;
+}
+
+.head-month {
+    margin-top: 20px;
+    font-size: 2em;
+    line-height: 1;
+    color: #fff;
+}
+
+#calendar {
+    width: 90%;
+    margin: 0 auto;
+}
+
+#calendar tr {
+    height: 2em;
+    line-height: 2em;
+}
+
+thead tr {
+    color: #e66b6b;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+tbody tr {
+    color: #252a25;
+}
+
+tbody td{
+    width: 14%;
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-transition:all 0.2s ease-in;
+    transition:all 0.2s ease-in;
+}
+
+tbody td:hover, .selected {
+    color: #fff;
+    background-color: #2a3246;
+    border: none;
+}
+
+tbody td:active {
+    -webkit-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    transform: scale(0.7);
+}
+
+#today {
+    background-color: #e66b6b;
+    color: #fff;
+    font-family: serif;
+    border-radius: 50%;
+}
+
+#disabled {
+    cursor: default;
+    background: #fff;
+}
+
+#disabled:hover {
+    background: #fff;
+    color: #c9c9c9;
+}
+
+#reset {
+    display: block;
+    position: absolute;
+    right: 0.5em;
+    top: 0.5em;
+    z-index: 999;
+    color: #fff;
+    font-family: serif;
+    cursor: pointer;
+    padding: 0 0.5em;
+    height: 1.5em;
+    border: 0.1em solid #fff;
+    border-radius: 4px;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+#reset:hover {
+    color: #e66b6b;
+    border-color: #e66b6b;
+}
+
+#reset:active{
+    -webkit-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    transform: scale(0.8);     
+}
+
+#header > div.next-button {
+    margin-top: 82px;
+}
+
+    </style>
+
 </head>
 
 <body id="page-top">
@@ -48,8 +254,8 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+             <!-- Nav Item - Dashboard -->
+             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('home') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Tableau De Bord</span></a>
@@ -63,6 +269,8 @@
                 Interface
             </div>
 
+            <!-- Nav Item - Pages Collapse Menu -->
+            
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('patientliste') }}">
                     <i class="fas fa-fw fa-cog"></i>
@@ -194,6 +402,9 @@
             </li>
             @endcan
             
+        
+
+
         </ul>
         <!-- End of Sidebar -->
 
@@ -259,28 +470,25 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</span>
                                 <img class="img-profile rounded-circle"
-                                    src="{{URL::asset(Auth::user()->image)}}">
-                                    
+                                src="{{URL::asset('storage/'.Auth::user()->image)}}">
                             </a>
-                            
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="{{ route('profil') }}">
+                                <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Afficher Profil
                                 </a>
-                                <a class="dropdown-item" href="{{ route('profiledit') }}">
+                                <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Modifier Profil
                                 </a>
                                 
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/deconnexion" data-toggle="modal" data-target="#logoutModal">
-                                <!-- <a href="/deconnexion" class="button">Déconnexion</a> -->
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Déconnexion
                                 </a>
                             </div>
@@ -290,76 +498,62 @@
 
                 </nav>
                 <div class="card ml-4" style="width: 70rem;">
-                    <div class="card-body">
-                        <div class="row">
-                            <!-- <div class="d-flex" style="height: 200px;"> -->
-                                <div class="vr"></div>
-                            <!-- </div> -->
-                            <div class="col-lg-12">
-                                <h2>Gestion Patients</h2>
-                                <a href="{{ route('patientajout') }}" class="btn btn-primary mb-4" style="margin-left:940px; background-color: #FF1493;">Ajouter Patient</a>
-                                <div class="card shadow mb-4" style="width:100%;">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Liste Des Patients</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                                    
-                                    <div class="row"><div class="col-sm-12 mt-4"><table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
-                                    <thead>
-                                        <tr role="row"><th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 194px;">Id</th><th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 194px;">Nom</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 296px;">Prénom</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 141px;">E-Mail</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 66px;">Numéro de Téléphone</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 133px;">Date de Naissance</th><th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 194px;">Action</th></tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr><th rowspan="1" colspan="1">Id</th><th rowspan="1" colspan="1">Nom</th><th rowspan="1" colspan="1">Prénom</th><th rowspan="1" colspan="1">E-Mail</th><th rowspan="1" colspan="1">Numéro</th><th rowspan="1" colspan="1">Age</th><th rowspan="1" colspan="1">Actions</th></tr>
-                                    </tfoot>
-                                    @foreach ($patient as $key => $user)
-                                    <tbody>          
-                                    <tr class="odd">
-                                            
-                                        </tr><tr class="even">
-                                        <td>{{ $user->id }}</td>
-                                            <td class="sorting_1">{{ $user->nom }}</td>
-                                    
-                                            <td>{{ $user->prenom }}</td>
-                                            <td>{{ $user->email }}</td>
-                                            <td>{{ $user->numero }}</td>
-                                            <td>{{ $user->age }}</td>
-                                            <td>
-                                            <div class="btn-group">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"> Plus</button>
-                                                <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">Voir Informations</a>
-                                                <a class="dropdown-item" href="#">Modifier</a>
-                                                <a class="dropdown-item" href="#">Supprimer</a>
-                                                <a class="dropdown-item" href="#">Ajouter Antécédent</a>
-                                                <a class="dropdown-item" href="#">Ajouter Adresse</a>
+                            <div class="card-body">
+                            <form method="post" action="{{ route('adressedit', $user->id) }}" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                                {{ method_field('post') }}
+                                        <div class="row">
+                                                <div class="col-lg-3" style=" border-right:1px solid black; margin-right:20px;">
+                                                    <div class="text-center">
+                                                        <img src="{{URL::asset('storage/'.Auth::user()->image)}}" height="140" style="border-radius: 55px!important;" class="rounded-pill" alt="...">
+                                                    </div>
+                                                    <div class="text-center mt-4">
+                                                    <!-- <a href="#" class="btn btn-primary">Choisir</a> -->
+                                                    <input type="file" name="image" class="form-control" id="">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            </div>
-                                            </td>
+                                                    <!-- <div class="d-flex" style="height: 200px;"> -->
+                                                <div class="vr"></div>
+                                                    <!-- </div> -->
+                                                <div class="col-lg-6">
+                                                <h2>Modifier Votre Adresse</h2>
+                                                    <div class="mb-4"  style="margin-left:430px;">
+                                                        <a href="{{ route('profil') }}" class="btn btn-primary"style="background-color: #FF1493;">Retour</a>
+    
+                                                    </div>
+                                                    @foreach ($adresses as $adresse)
+                                                    <div class="mb-4">
+                                                        <label class="list-group-item py-3" for="listGroupCheckableRadios1">
+                                                        Quartier
+                                                        <input type="text" class="form-control" id="" name="quartier" value="{{ $user->adresse->quartier }}">
+                                                        </label>
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <label class="list-group-item py-3" for="listGroupCheckableRadios1">
+                                                        Ville
+                                                        <input type="text" class="form-control" id="" name="ville" value="{{ Auth::user()->adresse->ville }}">
+                                                        </label>
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <label class="list-group-item py-3" for="listGroupCheckableRadios1">
+                                                        Pays
+                                                        <input type="text" class="form-control" id="" name="pays" value="{{ Auth::user()->adresse->pays }}">
+                                                        </label>
+                                                    </div>
+                                                    @endforeach
+                                                   
+                                                    <div class="form-group text-center">
+                                                        <input type="submit" name="edit" class="btn btn-primary input-lg" value="Modifier" />
+                                                    </div>  
                                             
-                                    </tr>
-                                    </tbody>
-                                        @endforeach
-                                </table>
+                                        </div>
+                                </form> 
+                                <!-- <div class="col-lg-3">4</div> -->
                             </div>
-                        </div>
-                        
                     </div>
-                    </div>
-                        </div>
-                    </div>
-
                 </div>
-                <!-- /.container-fluid -->
-
-            </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+     <!-- Footer -->
+     <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                 <div class="copyright">
           &copy; Copyright <strong><span>Dharma</span></strong>. Tous droits reservés.
@@ -400,22 +594,21 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="dashboard/vendor/jquery/jquery.min.js"></script>
-    <script src="dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('dashboard/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="dashboard/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="{{ asset('dashboard/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="dashboard/js/sb-admin-2.min.js"></script>
+    <script src="{{ asset('dashboard/js/sb-admin-2.min.js') }}"></script>
 
     <!-- Page level plugins -->
-    <script src="dashboard/vendor/chart.js/Chart.min.js"></script>
+    <script src="{{ asset('dashboard/vendor/chart.js/Chart.min.js') }}"></script>
 
     <!-- Page level custom scripts -->
-    <script src="dashboard/js/demo/chart-area-demo.js"></script>
-    <script src="dashboard/js/demo/chart-pie-demo.js"></script>
-   
+    <script src="{{ asset('dashboard/js/demo/chart-area-demo.js') }}"></script>
+    <script src="{{ asset('dashboard/js/demo/chart-pie-demo.js') }}"></script>
 
 </body>
 

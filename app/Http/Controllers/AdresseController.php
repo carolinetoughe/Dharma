@@ -1,27 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\User;
 use Auth;
+use App\Adresse;
 use Illuminate\Http\Request;
 
-class RendezvousController extends Controller
+class AdresseController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth')->except('accueil');
-    }
     public function index()
     {
         //
-    }
-    public function rendezvousliste(Request $request)
-    {
-        return view('rendezvous/rendezvousliste');
     }
 
     /**
@@ -88,5 +82,21 @@ class RendezvousController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function adressedit()
+    {
+        $user = Auth::guard()->User();
+        $adresses = Adresse::get();
+        return view('adresses/adressedit',compact('adresses','user'));
+    }
+    public function adresseditupdate(Request $request)
+    {
+        $user = Adresse::find(Auth::User()->id);
+        $user->quartier = $request['quartier'];
+        $user->ville = $request['ville'];
+        $user->pays = $request['pays'];
+        $user->save();
+  
+        return redirect()->route('profil');
     }
 }
