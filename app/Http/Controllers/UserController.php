@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Antecedent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Patient;
 use Auth;
 use App\Adresse;
-use App\Disponibilite;
 use Spatie\Permission\Models\Role;
 use DB;
 use Hash;
@@ -175,6 +176,56 @@ class UserController extends Controller
         return redirect()->route('patientliste')
                         ->with('Bravo','Nouveau Compte Patient Créé!');
     }
+     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function patientshow($id)
+    {
+        
+        $users = User::find($id);
+        $patients= Patient::get();
+        $adresses = Adresse::get();
+        $antecedents = Antecedent::get();
+        return view('users/patientshow',compact('users','patients','adresses','antecedents'));
+    }
+    public function patientinfo($id)
+    {
+        $users = User::find($id);
+        $patients= Patient::get();
+        $adresses = Adresse::get();
+        $antecedents = Antecedent::get();
+        return view('users/patientinfo',compact('users','patients','adresses','antecedents'));
+    }
+    public function patientinfoupdate(Request $request)
+    {
+        $this->validate($request, [
+            'nom' => 'required',
+            'prenom' => 'required',
+            'numero' => 'required',
+            'image' => 'required',
+            'datenaissance'=>'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required',
+            'roles' => 'required'
+
+        ]);
+
+        $input = $request->all();
+        $image = request()->file('image');
+        $path = $image->move('images');
+        $input['password'] = Hash::make($input['password']);
+        $input['image'] = $path;
+        $user = User::create($input);
+        $user->assignRole($request->input('roles'));
+
+        return redirect()->route('patientliste')
+                        ->with('Bravo','Nouveau Compte Patient Créé!');
+    }
+
     public function personnelliste(Request $request)
     {
         return view('users/personnelliste');
@@ -196,6 +247,13 @@ class UserController extends Controller
     {
         $patients = User::where('roles','Patient')->count();
         return view('home',compact('patients'));
+    }
+    public function destroy($id)
+    {
+       $user = User::find($id);
+       $user->delete();
+        return redirect()->route('patientliste')->with('success', 'Patient supprime');
+ 
     }
     
 }

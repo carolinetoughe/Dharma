@@ -15,9 +15,9 @@ class Patient extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('user_id')->unsigned();;
             $table->integer('taille');
             $table->string('profession');
-            $table->string('adresse');
             $table->integer('grossesseanterieure');
             $table->date('regles');
             $table->string('avortement');
@@ -27,6 +27,10 @@ class Patient extends Migration
             $table->timestamps();
 
         
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('cascade');
         });
     }
 

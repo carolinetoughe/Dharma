@@ -14,8 +14,8 @@ class Consultationenfant extends Migration
     public function up()
     { Schema::create('consultationenfants', function (Blueprint $table) {
         $table->bigIncrements('id');
-        $table->integer('id_enfant')->unsigned();;
-        $table->integer('id_user')->unsigned();;
+        $table->integer('enfant_id')->unsigned();;
+        $table->integer('user_id')->unsigned();;
         $table->string('piedbot');
         $table->integer('poids');
         $table->integer('perimetrecranien');
@@ -33,11 +33,11 @@ class Consultationenfant extends Migration
 
         $table->timestamps();
 
-        $table->foreign('id_enfant')
+        $table->foreign('enfant_id')
             ->references('id')
             ->on('enfants')
             ->onDelete('cascade');
-            $table->foreign('id_user')
+            $table->foreign('user_id')
             ->references('id')
             ->on('users')
             ->onDelete('cascade');

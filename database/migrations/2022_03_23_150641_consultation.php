@@ -16,9 +16,9 @@ class Consultation extends Migration
         Schema::create('consultations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('date');
-            $table->integer('id_rendezvous')->unsigned();;
-            $table->integer('id_user')->unsigned();;
-            $table->integer('id_patient')->unsigned();;
+            $table->integer('rendezvous_id')->unsigned();;
+            $table->integer('user_id')->unsigned();;
+            $table->integer('patient_id')->unsigned();;
             $table->Integer('pressionarterielle');
             $table->Integer('poids');
             $table->string('cicatrice');
@@ -31,15 +31,15 @@ class Consultation extends Migration
             $table->Integer('col');
             $table->timestamps();
 
-            $table->foreign('id_rendezvous')
+            $table->foreign('rendezvous_id')
             ->references('id')
             ->on('rendezvous')
             ->onDelete('cascade');
-            $table->foreign('id_user')
+            $table->foreign('user_id')
             ->references('id')
             ->on('users')
             ->onDelete('cascade');
-            $table->foreign('id_patient')
+            $table->foreign('patient_id')
             ->references('id')
             ->on('patients')
             ->onDelete('cascade');

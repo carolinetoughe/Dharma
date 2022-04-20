@@ -16,10 +16,10 @@ class Antecedent extends Migration
         Schema::create('antecedents', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nom');
-            $table->integer('id_patient')->unsigned();;
+            $table->integer('user_id')->unsigned();;
             $table->timestamps();
 
-            $table->foreign('id_patient')
+            $table->foreign('user_id')
             ->references('id')
             ->on('patients')
             ->onDelete('cascade');

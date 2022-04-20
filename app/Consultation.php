@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Consultation extends Model
 {
     protected $fillable = [
-        'pressionarterielle','poids','cicatrice','volumeuterien','saignement','fievre','douleurs','contractions','coeurfoetal','col','id_rendezvous','id_user','id_patient'
+        'pressionarterielle','poids','cicatrice','volumeuterien','saignement','fievre','douleurs','contractions','coeurfoetal','col','rendezvous_id','user_id','patient_id'
     ];
     public function user()
 {

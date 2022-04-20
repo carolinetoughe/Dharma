@@ -48,6 +48,10 @@ class User extends Authenticatable
     {
     return $this->hasMany('App\Rendezvous');
     }
+    public function antecedent()
+    {
+    return $this->hasOne('App\Antecedent');
+    }
     public function fichesoin()
     {
     return $this->belongsToMany(Fichesoin::class,'fichesoin_user');
@@ -59,6 +63,10 @@ class User extends Authenticatable
     public function adresse()
     {
     return $this->hasOne('App\Adresse');
+    }
+    public function patient()
+    {
+    return $this->hasOne('App\Patient');
     }
     public function getAgeAttribute()
     {

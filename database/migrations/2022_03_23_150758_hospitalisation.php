@@ -15,9 +15,9 @@ class Hospitalisation extends Migration
     {
         Schema::create('hospitalisations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_consultation');
-            $table->integer('id_chambre');
-            $table->integer('id_fichesoin');
+            $table->integer('consultation_id');
+            $table->integer('chambre_id');
+            $table->integer('fichesoin_id');
             $table->Date('datedebut');
             $table->Date('datefin');
             $table->string('motif');
@@ -25,16 +25,16 @@ class Hospitalisation extends Migration
             $table->integer('sejour');
             $table->timestamps();
 
-            $table->foreign('id_consultation')
+            $table->foreign('consultation_id')
             ->references('id')
             ->on('consultations')
             ->onDelete('cascade');
 
-            $table->foreign('id_chambre')
+            $table->foreign('chambre_id')
             ->references('id')
             ->on('chambres')
             ->onDelete('cascade');
-            $table->foreign('id_fichesoin')
+            $table->foreign('fichesoin_id')
             ->references('id')
             ->on('fichesoins')
             ->onDelete('cascade');

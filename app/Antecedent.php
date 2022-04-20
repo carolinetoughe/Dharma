@@ -1,15 +1,15 @@
 <?php
 
 namespace App;
-use App\Patient;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Antecedent extends Model
 {
     protected $fillable = [
-        'nom','patient_id'
+        'nom','user_id'
     ];
-    public function patient()
+    public function user()
 {
-    return $this->belongsTo('App\Patient');
+    return $this->belongsTo('App\User');
 }}

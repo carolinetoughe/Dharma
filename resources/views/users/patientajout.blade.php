@@ -254,7 +254,7 @@ tbody td:active {
         <ul class="navbar-nav sidebar sidebar-dark accordion" style="    background-color: #4e73df;
                 background-image: linear-gradient(180deg,#FF1493 10%,#FF1493 100%);
                 background-size: cover;
-            }" id="accordionSidebar">
+            " id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">

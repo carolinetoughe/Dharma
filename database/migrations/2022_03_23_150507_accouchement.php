@@ -16,7 +16,7 @@ class Accouchement extends Migration
         Schema::create('accouchements', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('date');
-            $table->integer('id_hospitalisation')->unsigned();;
+            $table->integer('hospitalisation_id')->unsigned();;
             $table->string('lieu');
             $table->string('typegrossesse');
             $table->Integer('dureetravail');
@@ -37,7 +37,7 @@ class Accouchement extends Migration
             $table->string('delivrance');
             $table->timestamps();
 
-            $table->foreign('id_hospitalisation')
+            $table->foreign('hospitalisation_id')
             ->references('id')
             ->on('hospitalisations')
             ->onDelete('cascade');

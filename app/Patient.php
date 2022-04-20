@@ -16,7 +16,7 @@ class Patient extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'taille','adresse','profession','regles','grossesseanterieure','avortement','nbreEnfant', 'cesarienne','dateAccouchement',
+        'taille','profession','regles','grossesseanterieure','avortement','nbreEnfant', 'cesarienne','dateAccouchement','user_id'
     ];
 
     /**
@@ -25,7 +25,7 @@ class Patient extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token','user_id',
     ];
 
     /**
@@ -36,12 +36,12 @@ class Patient extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function antecedents()
-    {
-        return $this->hasMany(Antecedent::class);
-    }
     public function rendezvous()
     {
     return $this->hasMany('App\Rendezvous');
+    }
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }

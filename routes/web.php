@@ -30,6 +30,24 @@ Route::get('/personnel/liste', 'UserController@personnelliste')->name('personnel
 Route::get('/patient/ajout', 'UserController@patientajout')->name('patientajout');
 Route::post('/patient/ajout', 'UserController@patientajoutupdate')->name('patientajoutupdate');
 
+Route::get('/dossier/ajout', 'DossierController@create')->name('dossierajout');
+Route::post('/dossiert/ajout', 'DossierController@store')->name('dossierajoutupdate');
+
+Route::get('/adresse/ajout', 'AdresseController@create')->name('adresseajout');
+Route::post('/adresse/ajout', 'AdresseController@store')->name('adresseajoutupdate');
+
+Route::get('/antecedent/ajout', 'AntecedentController@create')->name('antecedentajout');
+Route::post('/antecedent/ajout', 'AntecedentController@store')->name('antecedentajoutupdate');
+
+Route::get('/patient/show/{id}', 'UserController@patientshow')->name('patientshow');
+Route::get('/patient/info/{id}', 'UserController@patientinfo')->name('patientinfo');
+
+
+
+Route::post('/patient/info/{id}', 'UserController@patientinfoupdate')->name('patientinfoupdate');
+
+
+
 Route::get('/personnel/ajout', 'UserController@personnelajout')->name('personnelajout');
 Route::post('/personnel/ajout', 'UserController@personnelajoutupdate')->name('personnelajoutupdate');
 
@@ -58,6 +76,7 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
+    Route::resource('dossiers','DossierController');
     Route::resource('accouchements', 'AccouchementController');
     Route::resource('consultations','ConsultationController');
     Route::resource('hospitalisations','HospitalisationController');

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Rendezvous extends Model
 {
     protected $fillable = [
-        'daterdv','motif','heure','statut','id_soignant','id_patient','id_secretaire'
+        'daterdv','motif','heure','statut','soignant_id','patient_id','secretaire_id'
     ];
     public function user()
 {

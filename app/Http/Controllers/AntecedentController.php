@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\User;
-use Auth;
-use App\Adresse;
-use Illuminate\Http\Request;
 
-class AdresseController extends Controller
+use Illuminate\Http\Request;
+use App\Antecedent;
+use App\User;
+
+class AntecedentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +26,7 @@ class AdresseController extends Controller
     public function create()
     {
         $users = User::get();
-        return view('adresses/adresseajout',compact('users'));
+        return view('antecedents/antecedentajout',compact('users'));
     }
 
     /**
@@ -38,19 +38,15 @@ class AdresseController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'quartier' => 'required',
-            'ville' => 'required',
-            'pays' => 'required',
+            'nom' => 'required',
             'user_id' => 'required',
     
         ]);
         $form_data = array(
-            'quartier'       =>   $request->quartier,
-            'ville'       =>   $request->ville,
-            'pays'       =>   $request->pays,
-            'user_id'       =>   $request->user_id,
+            'nom'       =>   $request->nom,
+            'user_id'        =>   $request->user_id,
         );
-        Adresse::create($form_data);
+        Antecedent::create($form_data);
         return redirect()->route('patientliste')
                     ->with('Bravo','nouveau dossier ajouté.');
     }
@@ -98,21 +94,5 @@ class AdresseController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function adressedit()
-    {
-        $user = Auth::guard()->User();
-        $adresses = Adresse::get();
-        return view('adresses/adressedit',compact('adresses','user'));
-    }
-    public function adresseditupdate(Request $request)
-    {
-        $user = Adresse::find(Auth::User()->id);
-        $user->quartier = $request['quartier'];
-        $user->ville = $request['ville'];
-        $user->pays = $request['pays'];
-        $user->save();
-  
-        return redirect()->route('profil');
     }
 }

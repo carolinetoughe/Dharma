@@ -15,14 +15,14 @@ class Horaire extends Migration
     {
         Schema::create('horaires', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_user')->unsigned();;
+            $table->integer('user_id')->unsigned();;
             $table->string('jour');
             $table->string('debut');
             $table->string('fin');
             $table->string('statut');
             $table->timestamps();
 
-            $table->foreign('id_user')
+            $table->foreign('user_id')
             ->references('id')
             ->on('users')
             ->onDelete('cascade');

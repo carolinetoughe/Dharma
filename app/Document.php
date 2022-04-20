@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Document extends Model
 {
     protected $fillable = [
-        'nom','commentaire','id_consultation'
+        'nom','commentaire','consultation_id'
     ];
     public function consultation()
 {

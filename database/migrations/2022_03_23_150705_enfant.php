@@ -15,7 +15,7 @@ class Enfant extends Migration
     {
         Schema::create('enfants', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_accouchement')->unsigned();;
+            $table->integer('accouchement_id')->unsigned();;
             $table->string('nom');
             $table->string('prenom');
             $table->string('sexe');
@@ -37,7 +37,7 @@ class Enfant extends Migration
             $table->string('groupesanguin');
             $table->timestamps();
 
-            $table->foreign('id_accouchement')
+            $table->foreign('accouchement_id')
             ->references('id')
             ->on('accouchements')
             ->onDelete('cascade');

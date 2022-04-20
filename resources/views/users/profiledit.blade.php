@@ -241,7 +241,7 @@ tbody td:active {
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" style="    background-color: #4e73df;
                 background-image: linear-gradient(180deg,#FF1493 10%,#FF1493 100%);
                 background-size: cover;
-            }" id="accordionSidebar">
+            " id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -546,7 +546,7 @@ tbody td:active {
                                                     <div class="mb-4">
                                                         <label class="list-group-item py-3" for="listGroupCheckableRadios1">
                                                         Date De Naissance
-                                                        <input type="date" class="form-control" id="" name="datenaissance" value="{{ $user->datenaissance }}">
+                                                        <input  type="date" class="form-control" id="" name="datenaissance" value="{{ $user->datenaissance }}">
                                                         </label>
                                                     </div>
                                                     <div class="mb-4">

@@ -16,23 +16,23 @@ class Rendezvous extends Migration
         Schema::create('rendezvous', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('daterdv');
-            $table->integer('id_soignant')->unsigned();;
-            $table->integer('id_secretaire')->unsigned();;
-            $table->integer('id_patient')->unsigned();;
+            $table->integer('soignant_id')->unsigned();;
+            $table->integer('secretaire_id')->unsigned();;
+            $table->integer('patient_id')->unsigned();;
             $table->string('motif');
             $table->string('heure');
             $table->string('statut');
             $table->timestamps();
 
-            $table->foreign('id_soignant')
+            $table->foreign('soignant_id')
             ->references('id')
             ->on('users')
             ->onDelete('cascade');
-            $table->foreign('id_secretaire')
+            $table->foreign('secretaire_id')
             ->references('id')
             ->on('users')
             ->onDelete('cascade');
-            $table->foreign('id_patient')
+            $table->foreign('patient_id')
             ->references('id')
             ->on('patients')
             ->onDelete('cascade');

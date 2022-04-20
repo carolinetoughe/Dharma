@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\User;
-use Auth;
-use App\Adresse;
+use App\Patient;
 use Illuminate\Http\Request;
 
-class AdresseController extends Controller
+class DossierController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,32 +24,39 @@ class AdresseController extends Controller
      */
     public function create()
     {
+        // dd($user);
         $users = User::get();
-        return view('adresses/adresseajout',compact('users'));
+        return view('dossiers/dossierajout',compact('users'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
+     * 
      * @param  \Illuminate\Http\Request  $request
+     * @param  \App\User $users
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $request->validate([
-            'quartier' => 'required',
-            'ville' => 'required',
-            'pays' => 'required',
+            'taille' => 'required',
+            'profession' => 'required',
             'user_id' => 'required',
     
         ]);
         $form_data = array(
-            'quartier'       =>   $request->quartier,
-            'ville'       =>   $request->ville,
-            'pays'       =>   $request->pays,
-            'user_id'       =>   $request->user_id,
+            'taille'       =>   $request->taille,
+            'grossesseanterieure'        =>   $request->grossesseanterieure,
+            'profession'        =>   $request->profession,
+            'avortement'        =>   $request->avortement,
+            'regles'       =>   $request->regles,
+            'user_id'        =>   $request->user_id,
+            'cesarienne'       =>   $request->cesarienne,
+            'nbreEnfant'        =>   $request->nbreEnfant,
+            'dateAccouchement'        =>   $request->dateAccouchement,
         );
-        Adresse::create($form_data);
+        Patient::create($form_data);
         return redirect()->route('patientliste')
                     ->with('Bravo','nouveau dossier ajouté.');
     }
@@ -98,21 +104,5 @@ class AdresseController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function adressedit()
-    {
-        $user = Auth::guard()->User();
-        $adresses = Adresse::get();
-        return view('adresses/adressedit',compact('adresses','user'));
-    }
-    public function adresseditupdate(Request $request)
-    {
-        $user = Adresse::find(Auth::User()->id);
-        $user->quartier = $request['quartier'];
-        $user->ville = $request['ville'];
-        $user->pays = $request['pays'];
-        $user->save();
-  
-        return redirect()->route('profil');
     }
 }

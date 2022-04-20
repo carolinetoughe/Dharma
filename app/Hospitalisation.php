@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Hospitalisation extends Model
 {
     protected $fillable = [
-        'datedebut','datefin','motif','statut','sejour','id_consultation','id_chambre','id_fichesoin'
+        'datedebut','datefin','motif','statut','sejour','consultation_id','chambre_id','fichesoin_id'
     ];
     public function consultation()
     {

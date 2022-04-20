@@ -8,7 +8,7 @@ use App\Hospitalisation;
 class Accouchement extends Model
 {
     protected $fillable = [
-        'date','lieu','typegrossesse','dureetravail','rupture','particularitetravail','heurenaissance','typenaissance','anesthesie','ventouse','voiebasse','cesarienne','presentationnaissance','gemellaire','delaiacc','rupturedeuxieme','presentationdeuxieme','modalité','delivrance','id_hospitalisation'
+        'date','lieu','typegrossesse','dureetravail','rupture','particularitetravail','heurenaissance','typenaissance','anesthesie','ventouse','voiebasse','cesarienne','presentationnaissance','gemellaire','delaiacc','rupturedeuxieme','presentationdeuxieme','modalité','delivrance','hospitalisation_id'
     ];
     public function hospitalisation()
 {

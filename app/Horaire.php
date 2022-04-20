@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Horaire extends Model
 {
     protected $fillable = [
-        'jours','debut','fin','statut','id_user'
+        'jours','debut','fin','statut','user_id'
     ];
     public function user()
 {

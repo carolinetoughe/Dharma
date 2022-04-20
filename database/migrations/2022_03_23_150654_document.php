@@ -15,12 +15,12 @@ class Document extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_consultation')->unsigned();;
+            $table->integer('consultation_id')->unsigned();;
             $table->string('nom');
             $table->string('commentaire');
             $table->timestamps();
 
-            $table->foreign('id_consultation')
+            $table->foreign('consultation_id')
             ->references('id')
             ->on('consultations')
             ->onDelete('cascade');
